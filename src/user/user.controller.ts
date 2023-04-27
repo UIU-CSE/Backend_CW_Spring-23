@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { CreateUserDTO } from './dto/user.dto';
 import { UserService } from './user.service';
 
@@ -31,5 +31,11 @@ export class UserController {
     ];
 
     return user;
+  }
+
+  @Get('getUserByID')
+  async getUserByID(@Param('id') id: number) {
+    console.log(id);
+    return this.userService.getUserByID(id);
   }
 }

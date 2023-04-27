@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { IsOptional, IsString } from 'class-validator';
 
 export class CreateUserDTO {
   @ApiProperty({
@@ -7,7 +8,7 @@ export class CreateUserDTO {
     type: String,
     example: 'Developer',
   })
-  //@IsString() -- class-validator
+  @IsString()
   readonly first_name: string;
 
   @ApiProperty({
@@ -16,7 +17,8 @@ export class CreateUserDTO {
     type: String,
     example: 'xx',
   })
-  //@IsString() -- class-validator
+  @IsString()
+  @IsOptional()
   readonly middle_name: string;
 
   @ApiProperty({
@@ -25,6 +27,24 @@ export class CreateUserDTO {
     type: String,
     example: 'Engineer',
   })
-  //@IsString() -- class-validator
+  @IsString()
   readonly last_name: string;
+
+  @ApiProperty({
+    name: 'email',
+    description: 'Email of the user',
+    type: String,
+    example: 'dev@dev.com',
+  })
+  @IsString()
+  readonly email: string;
+
+  @ApiProperty({
+    name: 'status',
+    description: 'ACTIVE/INACTIVE',
+    type: String,
+    example: 'active',
+  })
+  @IsString()
+  readonly status: string;
 }

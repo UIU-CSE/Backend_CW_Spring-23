@@ -35,6 +35,9 @@ export class User {
   @Column('varchar', { length: 20, name: 'phone', nullable: true })
   readonly phone?: string;
 
+  @Column('varchar', { length: 20, name: 'status', nullable: false })
+  readonly status: string;
+
   @CreateDateColumn({ name: 'created_at', nullable: false })
   readonly created_at?: Date;
 
